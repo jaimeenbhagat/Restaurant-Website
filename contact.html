@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant - Contact Us</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./scripts.js"></script>
 </head>
 <body>
     <header>
@@ -22,19 +23,22 @@
         </nav>
     </header>
     <main>
-        <section>
+        <section class="contact">
             <h2>Get in Touch</h2>
             <p>Address: S.V. Road, Malad, Maharashtra, Mumbai, India</p>
             <p>Phone: +91 82918 00906</p>
             <p>Email: info@thegreatindianrestaurant.com</p>
-            <form>
+            <form action="submit_form.php" method="dialog">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
+                  
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
+                 
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" required></textarea>
-                <button type="submit">Send</button>
+                    
+                <button type="submit">Submit</button>
             </form>
         </section>
     </main>

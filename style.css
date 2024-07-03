@@ -8,21 +8,24 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6; 
     font-weight: bold;
-
-    background-image: url(./images/restaurant1.jpg);
+    background-color: #95D2B3;
     background-size: cover;
-    
+    animation: fadeIn 2s ease-in;
 }
 
-.logo img{
+.logo img {
     width: 50px;
 }
 
 section .menu-item img {
     width: 100px;
     height: 100px;
-    box-shadow: 0 2px 20px rgb(255, 0, 0);
+    box-shadow: 0 2px 20px rgba(255, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
 
+section .menu-item img:hover {
+    transform: scale(1.1);
 }
 
 header {
@@ -31,14 +34,18 @@ header {
     align-items: center;
     height: 60px;
     padding: 0 7vw;
-    background-color: rgb(248,232,217);
-    border-bottom: 2px solid rgb(252,196,124);
-    box-shadow: 0 2px 20px rgb(253,124,124);
+    background-color: #D8EFD3;
+    border-bottom: 2px solid rgb(252, 196, 124);
+    box-shadow: 0 2px 20px rgba(253, 124, 124, 0.5);
+    position: relative;
+    top: 0px;
+    z-index: 1000;
 }
 
-header p{
+header p {
     color: #ff0000;
 }
+
 nav ul {
     list-style: none;
     display: flex;
@@ -51,11 +58,28 @@ nav ul li {
 
 nav ul li a {
     color: #ff0000;
+    text-decoration: none;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ff0000;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 main {
     padding: 2em;
-    text-align: center ;
+    text-align: center;
+    animation: fadeIn 2s ease-in;
+
 }
 
 h1 {
@@ -76,7 +100,6 @@ section {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1em;
     margin-top: 1em;
-    
 }
 
 .menu-item {
@@ -84,13 +107,17 @@ section {
     padding: 1em;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
 
+.menu-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .menu-item h3 {
     margin-bottom: 0.5em;
     color: #ff0000;
-    
 }
 
 .menu-item p {
@@ -99,14 +126,74 @@ section {
 }
 
 footer {
-    background: rgb(248,232,217);
+    background: #f1f8e8;
     color: #ff0000;
     text-align: center;
     padding: 1em 0;
     position: fixed;
     width: 100%;
-    bottom: 0;
-    border-bottom: 2px solid rgb(252,196,124);
-    box-shadow: 0 2px 20px rgb(253,124,124);
+    bottom: 0px;
+    border-top: 2px solid rgb(252, 196, 124);
+    box-shadow: 0 -2px 20px rgba(253, 124, 124, 0.5);
+
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background: #ff6f61;
+    color: #0011fbd3;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0011fbd3;
+    color: #ff6f61;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 0.5em 0;
+    }
+
+    footer {
+        position: static;
+    }
+}
